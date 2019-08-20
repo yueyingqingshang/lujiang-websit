@@ -12,7 +12,6 @@
 		</div>
 	</section>
 </template>
-
 <script>
 export default {
 	name: 'pageHeader',
@@ -39,6 +38,9 @@ export default {
 	methods: {
 		goPage(nav) {
 			this.viewData.activeNav = nav.routeName;
+			this.$router.push({
+				name: 'support'
+			})
 		}
 	}
 }

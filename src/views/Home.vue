@@ -15,7 +15,7 @@
 			<div class="product-list">
 				<div class="product-item" v-for="item in viewData.productList" :key="item.id">
 					<div class="product-img">
-						<span>项目图片</span>
+						<img src="../assets/images/project01.png" alt="">
 					</div>
 					<div class="product-info">
 						<p class="product-name">{{item.name}}</p>
@@ -62,7 +62,6 @@ export default {
 </script>
 <style lang="scss">
 .page-home {
-	margin-top: 60px;
 	.header-area {
 		text-align: center;
 		padding: 100px;
@@ -74,7 +73,7 @@ export default {
 	.product-area {
 		text-align: center;
 		background: #F5F5F5;
-		padding: 15px;
+		padding: 50px 15px;
 		.product-title {
 			font-size: 28px;
 		}
@@ -97,7 +96,10 @@ export default {
 				}
 				.product-info {
 					text-align: left;
-					padding: 5px;
+					padding: 10px;
+					img {
+						max-width: 100%;
+					}
 				}
 			}
 		}

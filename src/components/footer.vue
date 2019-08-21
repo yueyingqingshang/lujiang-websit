@@ -4,7 +4,7 @@
 			<div class="carousel-area">
 				<!-- <img src="../assets/images/700x400-0.png" alt="" /> -->
 				<el-carousel>
-					<el-carousel-item v-for="(item,index) in 4" :key="item">
+					<el-carousel-item v-for="item in 4" :key="item">
 						<img src="../assets/images/700x400-0.png" alt="" />
 					</el-carousel-item>
 				</el-carousel>

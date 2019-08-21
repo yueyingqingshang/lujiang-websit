@@ -1,3 +1,4 @@
+
 <template>
   <section class="page-home">
 		<div class="header-area">
@@ -10,8 +11,10 @@
 			<el-button>GET STARTED</el-button>
 		</div>
 		<div class="product-area">
-			<p class="product-title">部分产品展示</p>
-			<el-button>全部产品</el-button>
+			<div class="product-top">
+				<p class="product-title">部分产品展示</p>
+				<el-button>全部产品</el-button>
+			</div>
 			<div class="product-list">
 				<div class="product-item" v-for="item in viewData.productList" :key="item.id">
 					<div class="product-img">
@@ -22,6 +25,9 @@
 						<p class="product-desc">{{item.description}}</p>
 					</div>
 				</div>
+				<!--eslint-disable-->
+				<div class="product-compatible" v-for="(compatible,index) in (viewData.rowNum-viewData.productList.length%viewData.rowNum)" v-if="viewData.productList.length%viewData.rowNum > 0" :key="index+viewData.productList.length+1"></div>
+				<!--eslint-disable-->
 			</div>
 		</div>
 		<div class="awesome-area">
@@ -31,7 +37,7 @@
 					<div class="awesome-icon">
 						<i :class="item.icon"></i>
 					</div>
-					<p class="awesome-title">{{item.title}}</pdiv>
+					<p class="awesome-title">{{item.title}}</p>
 					<p class="awesome-desc">
 						{{item.desc}}
 					</p>
@@ -65,6 +71,10 @@ export default {
 					id: 4,
 					name: '项目1',
 					description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.'
+				},{
+					id: 5,
+					name: '项目1',
+					description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.'
 				}],
 				awesomeList: [{
 					title:'功能齐全',
@@ -90,7 +100,8 @@ export default {
 					title:'永久开源',
 					icon: 'el-icon-time',
 					desc: '基于GPL(>=3)开源协议。'
-				}]
+				}],
+				rowNum: 4
 			}
 		}
 	}
@@ -107,24 +118,30 @@ export default {
 		}
 	}
 	.product-area {
-		text-align: center;
 		background: #F5F5F5;
 		padding: 50px 15px;
-		.product-title {
-			font-size: 28px;
+
+		.product-top {
+			text-align: center;
+			.product-title {
+				font-size: 28px;
+			}
 		}
 		.product-list {
 			display: flex;
-			justify-content: space-between;
+			justify-content: space-around;
 			flex-flow:row wrap;
-
 			.product-item {
-				width: 330px;
+				// display: inline-block;
+				width: calc(100%/4.2);
 				height: 405px;
-				margin-top: 30px;
-				border: 1px solid #000;
+				margin: 0 10px;
+				margin-top: 40px;
+				border: 1px solid #666;
 				border-radius: 4px;
 				background: #fff;
+				box-sizing: border-box;
+				text-align: center;
 				.product-img {
 					width: 100%;
 					height: 250px;
@@ -134,9 +151,17 @@ export default {
 					text-align: left;
 					padding: 10px;
 					img {
-						max-width: 100%;
+						width: 100%;
+						max-height: 100%;
 					}
 				}
+			}
+			.product-compatible {
+				width: calc(100%/4.2);
+				content: '';
+				border:1px solid transparent;
+				margin: 0 10px;
+				overflow: hidden;
 			}
 		}
 	}

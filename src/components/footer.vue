@@ -40,7 +40,7 @@
 					<div class="item-icon">
 						<i class="el-icon-s-promotion"></i>
 					</div>
-					<p>l890j817@126.com</p>
+					<p><a href=mailto:l890j817@126.com>l890j817@126.com</a></p>
 				</div>
 				<div class="contact-item">
 					<div class="item-icon">
@@ -151,6 +151,9 @@ export default {
 				p {
 					margin: 15px;
 					font-size: 16px;
+					a {
+						color: #111;
+					}
 				}
 				.wechat-img {
 					padding: 5px 15px;

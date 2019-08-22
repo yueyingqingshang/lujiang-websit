@@ -26,7 +26,7 @@
 					</div>
 				</div>
 				<!--eslint-disable-->
-				<div class="product-compatible" v-for="(compatible,index) in (viewData.rowNum-viewData.productList.length%viewData.rowNum)" v-if="viewData.productList.length%viewData.rowNum > 0" :key="index+viewData.productList.length+1"></div>
+				<!-- <div class="product-compatible" v-for="(compatible,index) in (viewData.rowNum-viewData.productList.length%viewData.rowNum)" v-if="viewData.productList.length%viewData.rowNum > 0" :key="index+viewData.productList.length+1"></div> -->
 				<!--eslint-disable-->
 			</div>
 		</div>
@@ -119,8 +119,7 @@ export default {
 	}
 	.product-area {
 		background: #F5F5F5;
-		padding: 50px 15px;
-
+		padding: 50px 0;
 		.product-top {
 			text-align: center;
 			.product-title {
@@ -128,14 +127,13 @@ export default {
 			}
 		}
 		.product-list {
-			display: flex;
-			justify-content: space-around;
-			flex-flow:row wrap;
+			width: 85%;
+			margin: 0 auto;
 			.product-item {
-				// display: inline-block;
-				width: calc(100%/4.2);
+				display: inline-block;
+				width: calc(100%/4.15);
 				height: 405px;
-				margin: 0 10px;
+				margin: 0 5px;
 				margin-top: 40px;
 				border: 1px solid #666;
 				border-radius: 4px;
@@ -145,15 +143,16 @@ export default {
 				.product-img {
 					width: 100%;
 					height: 250px;
-					border-bottom: 1px solid #ccc
+					img {
+						display: block;
+						width: 100%;
+						max-height: 100%;
+					}
 				}
 				.product-info {
 					text-align: left;
 					padding: 10px;
-					img {
-						width: 100%;
-						max-height: 100%;
-					}
+
 				}
 			}
 			.product-compatible {
@@ -197,9 +196,9 @@ export default {
 			}
 		}
 
-		.awesome-item:hover {
-			border-color: #0099FF;
-		}
+		// .awesome-item:hover {
+		// 	border-color: #0099FF;
+		// }
 	}
 }
 </style>

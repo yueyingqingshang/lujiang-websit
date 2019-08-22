@@ -1,15 +1,6 @@
 
 <template>
   <section class="page-home">
-		<div class="header-area">
-			<p class="header-tips">
-				Mr.Wednesday's Free Business Frameworker
-			</p>
-			<p>
-				One stop for Free, Professional and Open Source basic system solutions for Internet companies
-			</p>
-			<el-button>GET STARTED</el-button>
-		</div>
 		<div class="product-area">
 			<div class="product-top">
 				<p class="product-title">部分产品展示</p>
@@ -109,14 +100,7 @@ export default {
 </script>
 <style lang="scss">
 .page-home {
-	.header-area {
-		text-align: center;
-		padding: 100px;
-		font-size: 18px;
-		.header-tips {
-			font-size: 32px;
-		}
-	}
+
 	.product-area {
 		background: #F5F5F5;
 		padding: 50px 0;

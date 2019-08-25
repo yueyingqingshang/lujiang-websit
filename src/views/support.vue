@@ -1,6 +1,6 @@
 <template>
 	<section class="page-support">
-		<p class="page-title">全部产品</p>
+		<p class="page-title">技术支持</p>
 		<div class="support-list">
 			<div class="support-item" v-for="item in viewData.supportList" :key="item.id">
 				<div class="support-image">

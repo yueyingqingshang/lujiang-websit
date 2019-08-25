@@ -51,8 +51,6 @@ export default {
 		}
 	},
 	created() {
-		let currRoute = this.$router
-		console.log(currRoute)
 	},
 	methods: {
 		goHome() {

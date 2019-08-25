@@ -4,7 +4,7 @@
 		<div class="product-area">
 			<div class="product-top">
 				<p class="product-title">部分产品展示</p>
-				<el-button>全部产品</el-button>
+				<el-button @click="goAllProduct">全部产品</el-button>
 			</div>
 			<div class="product-list">
 				<div class="product-item" v-for="item in viewData.productList" :key="item.id">
@@ -94,6 +94,13 @@ export default {
 				}],
 				rowNum: 4
 			}
+		}
+	},
+	methods:{
+		goAllProduct() {
+			this.$router.push({
+				name: 'productList'
+			})
 		}
 	}
 }

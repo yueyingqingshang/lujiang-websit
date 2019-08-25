@@ -100,7 +100,6 @@ export default {
 </script>
 <style lang="scss">
 .page-home {
-
 	.product-area {
 		background: #F5F5F5;
 		padding: 50px 0;
@@ -139,13 +138,6 @@ export default {
 
 				}
 			}
-			.product-compatible {
-				width: calc(100%/4.2);
-				content: '';
-				border:1px solid transparent;
-				margin: 0 10px;
-				overflow: hidden;
-			}
 		}
 	}
 	.awesome-area {
@@ -163,7 +155,6 @@ export default {
 				width: calc(100%/3);
 				height: 220px;
 				padding: 15px;
-				border: 1px solid #fff;
 				box-sizing: border-box;
 				.awesome-icon {
 					i{

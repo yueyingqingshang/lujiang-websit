@@ -1,27 +1,51 @@
 <template>
-	<section class="page-product">
+	<section class="page-support">
 		<p class="page-title">全部产品</p>
-		<div class="product-list">
-			<div class="product-item" v-for="item in viewData.productList" :key="item.id">
-				<div class="product-image">
+		<div class="support-list">
+			<div class="support-item" v-for="item in viewData.supportList" :key="item.id">
+				<div class="support-image">
 					<div class="images-area">
 						<img src="@/assets/images/project01.png" alt="">
 					</div>
-					<p class="product-name">{{item.name}}</p>
+					<p class="support-name">{{item.name}}</p>
 					<div class="btn-area">
 						<el-button size="small">手册</el-button>
 						<el-button size="small">GtiHub</el-button>
 					</div>
 				</div>
-				<div class="product-info">
-					<div class="product-introduce">
-						<p>介绍</p>
-						<p class="introduce-area">{{item.description}}</p>
+				<div class="support-info">
+					<div class="support-introduce">
+						<p class="introduce-title"> <span>创建工单</span> <el-button size="small">转至GitHub提交issue</el-button> </p>
+						<p class="introduce-area">
+							<el-input
+								type="textarea"
+								:rows="3"
+								placeholder="请输入内容">
+							</el-input>
+						</p>
 					</div>
-					<p>演示</p>
-					<el-button>DEMO</el-button>
-					<P>下载最新版本</P>
-					<el-button>点击下载</el-button>
+					<div class="support-introduce">
+						<p class="introduce-title"> <span>联系方式</span></p>
+						<p class="introduce-area">
+							<el-input
+								placeholder="请输入内容">
+							</el-input>
+						</p>
+					</div>
+					<div class="support-introduce">
+						<p class="introduce-title">
+							<span class="title-info">选择支持类型</span>
+							<el-radio v-model="formData.workOrderType" label="1">提交为【免费支持】</el-radio>
+							<el-radio v-model="formData.workOrderType" label="2">付费为您的工单加速</el-radio>
+						</p>
+						<p class="introduce-area">
+							<el-input
+								class="mt-10"
+								placeholder="若您已付费，请再次填写您的订单号">
+							</el-input>
+						</p>
+						<el-button size="small">提交</el-button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -30,11 +54,14 @@
 
 <script>
 export default {
-	name: 'productList',
+	name: 'supportList',
 	data(){
 		return {
+			formData: {
+				workOrderType: '1'
+			},
 			viewData: {
-				productList: [{
+				supportList: [{
 					id: 1,
 					name: 'Wed-JOB',
 					description: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.'
@@ -62,24 +89,30 @@ export default {
 </script>
 
 <style lang="scss">
-.page-product {
+.page-support {
 	.page-title {
 		text-align: center;
 		padding-top: 60px;
 		font-size: 28px;
 	}
-	.product-list {
+	.support-list {
 		padding: 15px 50px;
-		.product-item {
+		.support-item {
 			display: flex;
 			margin: 30px 0;
-			.product-image {
+			.support-image {
 				border: 1px solid #333;
 				border-radius: 4px;
+				display: flex;
+				flex-direction: column;
 				.images-area {
-
+					flex: .9;
+					img {
+						width: 100%;
+						max-height: 100%;
+					}
 				}
-				.product-name {
+				.support-name {
 					padding-left: 20px;
 				}
 				.btn-area {
@@ -91,16 +124,29 @@ export default {
 					}
 				}
 			}
-			.product-info {
+			.support-info {
 				padding: 20px 25px;
 				font-size: 32px;
 				color: #666;
 				p {
 					margin: 10px 0;
 				}
-				.product-introduce {
+				.support-introduce {
+					.introduce-title {
+						display: flex;
+						align-items: center;
+						.title-info {
+							margin-right: 30px;
+						}
+						button {
+							margin-left: 30px;
+						}
+					}
 					.introduce-area {
 						font-size: 16px;
+						.mt-10 {
+							margin-top: 10px;
+						}
 					}
 				}
 			}

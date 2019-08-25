@@ -3,10 +3,21 @@ import {
 	Button,
 	Carousel,
 	CarouselItem,
-	Icon
+	Icon,
+	Input,
+	InputNumber,
+	Radio,
+  RadioGroup,
+  RadioButton,
  } from 'element-ui'
 
 Vue.use(Button)
 Vue.use(Carousel)
 Vue.use(CarouselItem)
 Vue.use(Icon)
+Vue.use(Input)
+Vue.use(InputNumber)
+Vue.use(Radio)
+Vue.use(RadioGroup)
+Vue.use(RadioButton)
+

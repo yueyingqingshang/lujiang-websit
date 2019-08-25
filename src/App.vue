@@ -22,6 +22,6 @@ export default {
 
 <style>
 	.page-main {
-		margin-top: 60px;
+		background: #F5F5F5;
 	}
 </style>

@@ -86,9 +86,8 @@ export default {
 .page-footer {
 
 	.footer-top {
-		background: #F5F5F5;
+		background: #fff;
 		display: flex;
-		// padding: 0 20px;
 		.carousel-area {
 			width: 700px;
 			img {
@@ -117,6 +116,7 @@ export default {
 		padding: 30px 80px;
 		padding-bottom: 0;
 		color: #333;
+		background: #F5F5F5;
 		font-size: 20px;
 		.author-area {
 			width: calc(100%/3);
@@ -141,7 +141,6 @@ export default {
 		}
 		.contact-area {
 			.contact-title {
-
 			}
 			.contact-item {
 				display: flex;

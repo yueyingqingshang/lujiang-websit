@@ -2,7 +2,7 @@
 	<section class="page-support">
 		<p class="page-title">技术支持</p>
 		<div class="support-list">
-			<div class="support-item" v-for="item in viewData.supportList" :key="item.id">
+			<div class="support-item" v-for="(item,index) in viewData.supportList" :key="item.id">
 				<div class="support-image">
 					<div class="images-area">
 						<img src="@/assets/images/project01.png" alt="">
@@ -18,6 +18,7 @@
 						<p class="introduce-title"> <span>创建工单</span> <el-button size="small">转至GitHub提交issue</el-button> </p>
 						<p class="introduce-area">
 							<el-input
+								v-model="formDataList[index]['workOrder']"
 								type="textarea"
 								:rows="3"
 								placeholder="请输入内容">
@@ -28,6 +29,7 @@
 						<p class="introduce-title"> <span>联系方式</span></p>
 						<p class="introduce-area">
 							<el-input
+								v-model="formDataList[index]['phoneNumber']"
 								placeholder="请输入内容">
 							</el-input>
 						</p>
@@ -35,16 +37,17 @@
 					<div class="support-introduce">
 						<p class="introduce-title">
 							<span class="title-info">选择支持类型</span>
-							<el-radio v-model="formData.workOrderType" label="1">提交为【免费支持】</el-radio>
-							<el-radio v-model="formData.workOrderType" label="2">付费为您的工单加速</el-radio>
+							<el-radio v-model="formDataList[index]['workOrderType']" label="1">提交为【免费支持】</el-radio>
+							<el-radio v-model="formDataList[index]['workOrderType']" label="2">付费为您的工单加速</el-radio>
 						</p>
 						<p class="introduce-area">
 							<el-input
 								class="mt-10"
+								v-model="formDataList[index]['orderNo']"
 								placeholder="若您已付费，请再次填写您的订单号">
 							</el-input>
 						</p>
-						<el-button size="small">提交</el-button>
+						<el-button size="small" @click="handleSubmit">提交</el-button>
 					</div>
 				</div>
 			</div>
@@ -57,9 +60,7 @@ export default {
 	name: 'supportList',
 	data(){
 		return {
-			formData: {
-				workOrderType: '1'
-			},
+			formDataList: [],
 			viewData: {
 				supportList: [{
 					id: 1,
@@ -84,10 +85,27 @@ export default {
 				}]
 			}
 		}
+	},
+	created() {
+		this.formDataList = this.viewData.supportList.map(item=>{
+			return {
+				id: item.id,
+				name: item.name,
+				description: item.description,
+				workOrder: '',
+				workOrderType: '1',
+				phoneNumber: '',
+				orderNo: ''
+			}
+		})
+	},
+	methods: {
+		handleSubmit() {
+			console.log(this.formDataList)
+		}
 	}
 }
 </script>
-
 <style lang="scss">
 .page-support {
 	.page-title {

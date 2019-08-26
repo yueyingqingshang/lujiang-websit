@@ -119,7 +119,7 @@ export default {
 		font-size: 18px;
 		color: #222;
 		background: #fff;
-		background: linear-gradient(top,#fff,#ccc);
+		background: linear-gradient(to bottom,#fff,#ccc);
 		.header-tips {
 			font-size: 32px;
 		}

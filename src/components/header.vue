@@ -6,22 +6,11 @@
 				<div class="operate-list">
 					<ul class="list-area">
 						<router-link v-for="item in viewData.operationList" :key="item.routeName" :to='item.routeName' active-class="active">{{item.label}}</router-link>
-						<!-- <li v-for="item in viewData.operationList" :key="item.routeName" :class="viewData.activeNav === item.routeName ? 'active':''" @click="goPage(item)">
-							<p>{{item.label}}</p>
-						</li> -->
 					</ul>
 				</div>
 			</div>
 		</div>
-		<div class="header-area">
-			<p class="header-tips">
-				Mr.Wednesday's Free Business Frameworker
-			</p>
-			<p>
-				One stop for Free, Professional and Open Source basic system solutions for Internet companies
-			</p>
-			<el-button>GET STARTED</el-button>
-		</div>
+
 	</section>
 </template>
 <script>
@@ -65,9 +54,8 @@ export default {
 <style lang="scss">
 	.page-header {
 		width: 100%;
-		height: 550px;
+		height: 60px;
 		color: #fff;
-		// background: #F5F5F5;
 		.main-area {
 			position: fixed;
 			background: #0593d3;
@@ -76,7 +64,7 @@ export default {
 			right: 0;
 			z-index: 10;
 			.page-nav {
-				max-width: 70%;
+				max-width: 90%;
 				margin: 0 auto;
 				display: flex;
 				justify-content: space-between;
@@ -120,15 +108,6 @@ export default {
 				}
 			}
 		}
-		.header-area {
-			text-align: center;
-			padding: 100px;
-			padding-top: 175px;
-			font-size: 18px;
-			color: #222;
-			.header-tips {
-				font-size: 32px;
-			}
-		}
+
 	}
 </style>

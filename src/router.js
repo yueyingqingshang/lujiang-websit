@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import home from './views/home.vue'
 import productList from './views/productList.vue'
 import user from './views/user.vue'
 import support from './views/support.vue'
@@ -12,12 +12,12 @@ export default new Router({
 		{
       path: '/',
       name: 'home',
-      component: Home
+      component: home
     },
     {
       path: '/home',
       name: 'home',
-      component: Home
+      component: home
     },
     {
       path: '/productList',

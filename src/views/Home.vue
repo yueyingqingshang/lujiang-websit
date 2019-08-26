@@ -1,6 +1,15 @@
 
 <template>
   <section class="page-home">
+		<div class="header-area">
+			<p class="header-tips">
+				Mr.Wednesday's Free Business Frameworker
+			</p>
+			<p>
+				One stop for Free, Professional and Open Source basic system solutions for Internet companies
+			</p>
+			<el-button>GET STARTED</el-button>
+		</div>
 		<div class="product-area">
 			<div class="product-top">
 				<p class="product-title">部分产品展示</p>
@@ -16,9 +25,6 @@
 						<p class="product-desc">{{item.description}}</p>
 					</div>
 				</div>
-				<!--eslint-disable-->
-				<!-- <div class="product-compatible" v-for="(compatible,index) in (viewData.rowNum-viewData.productList.length%viewData.rowNum)" v-if="viewData.productList.length%viewData.rowNum > 0" :key="index+viewData.productList.length+1"></div> -->
-				<!--eslint-disable-->
 			</div>
 		</div>
 		<div class="awesome-area">
@@ -107,6 +113,17 @@ export default {
 </script>
 <style lang="scss">
 .page-home {
+	.header-area {
+		text-align: center;
+		padding: 170px 0;
+		font-size: 18px;
+		color: #222;
+		background: #fff;
+		background: linear-gradient(top,#fff,#ccc);
+		.header-tips {
+			font-size: 32px;
+		}
+	}
 	.product-area {
 		background: #F5F5F5;
 		padding: 50px 0;

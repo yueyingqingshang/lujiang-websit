@@ -7,7 +7,6 @@
 	<pageFooter />
 </div>
 </template>
-
 <script>
 import pageHeader from '@/components/header.vue'
 import pageFooter from '@/components/footer.vue'
@@ -23,5 +22,6 @@ export default {
 <style>
 	.page-main {
 		background: #F5F5F5;
+		margin-top: -30px;
 	}
 </style>

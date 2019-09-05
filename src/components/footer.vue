@@ -2,17 +2,16 @@
 	<section class="page-footer">
 		<div class="footer-top">
 			<div class="carousel-area">
-				<!-- <img src="../assets/images/700x400-0.png" alt="" /> -->
 				<el-carousel>
-					<el-carousel-item v-for="item in 4" :key="item">
-						<img src="../assets/images/700x400-0.png" alt="" />
+					<el-carousel-item v-for="item in viewData.bannerList" :key="item.imgUrl">
+						<img :src="item.imgUrl" alt="" @click="gotoProject(item.hrefUrl)"/>
 					</el-carousel-item>
 				</el-carousel>
 			</div>
 			<div class="author-area">
 				<p class="author-title">支持作者</p>
 				<p class="author-desc">
-					Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+					{{viewData.authorInfo.description}}
 				</p>
 				<el-button @click="goSponsor">我要赞助</el-button>
 			</div>
@@ -21,7 +20,7 @@
 			<div class="author-area">
 				<p class="author-title">作者简介（About me）</p>
 				<p class="author-desc">
-					Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+					{{viewData.authorInfo.description}}
 				</p>
 			</div>
 			<div class="author-link">
@@ -30,7 +29,7 @@
 				</p>
 				<div class="link-list">
 					<p class="link-item" v-for="item in  viewData.linkList" :key="item.name">
-						<a :href="item.link">{{item.name}}</a>
+						<a :href="`https://${item.link}`" target="_black">{{item.name}}</a>
 					</p>
 				</div>
 			</div>
@@ -40,14 +39,14 @@
 					<div class="item-icon">
 						<i class="el-icon-s-promotion"></i>
 					</div>
-					<p><a href=mailto:l890j817@126.com>l890j817@126.com</a></p>
+					<p><a :href="`mailto:${viewData.authorInfo.email}`">{{viewData.authorInfo.email}}</a></p>
 				</div>
 				<div class="contact-item">
 					<div class="item-icon">
 						<i class="el-icon-s-comment"></i>
 					</div>
 					<div class="wechat-img">
-						<img src="@/assets/images/wechat.png" alt="">
+						<img :src="viewData.authorInfo.QRCodeUrl" alt="">
 					</div>
 				</div>
 			</div>
@@ -57,24 +56,18 @@
 </template>
 
 <script>
+import CONSTS from '@/utils/consts'
 export default {
 	name: 'pageFooter',
 	data() {
 		return {
 			viewData: {
-				linkList: [{
-					name: 'GitHub',
-					link: 'javascript:;'
-				},{
-					name: 'OSChina博客',
-					link: 'javascript:;'
-				},{
-					name: "Support & FAQ's",
-					link: 'javascript:;'
-				},{
-					name: 'Gitter',
-					link: 'javascript:;'
-				}],
+				// 轮播图列表
+				bannerList: CONSTS.bannerList,
+				// 链接列表
+				linkList:  CONSTS.linkList,
+				// 作者信息
+				authorInfo: CONSTS.authorInfo,
 				nowDate: new Date().getFullYear()
 			}
 		}
@@ -84,6 +77,9 @@ export default {
 			this.$router.push({
 				name: 'sponsor'
 			})
+		},
+		gotoProject(url) {
+			window.open(`https://${url}`);
 		}
 	}
 }

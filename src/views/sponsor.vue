@@ -12,30 +12,20 @@
 			</div>
 		</div>
 		<div class="page-btn">
-			<el-button>点此联系我</el-button>
+			<a :href="`mailto:${viewData.authorInfo.email}`" class="conact-btn">点此联系我</a>
 		</div>
 	</div>
 </template>
 
 <script>
+import CONSTS from '@/utils/consts'
 export default {
 	name: 'sponsor',
 	data() {
 		return {
 			viewData: {
-				sponsorList: [{
-					icon: 'el-icon-s-grid',
-					desc: '享受全部产品二次开发指导。'
-				},{
-					icon: 'el-icon-s-custom',
-					desc: '享受全部产品5*24小时远程支持。'
-				},{
-					icon: 'el-icon-s-opportunity',
-					desc: '首页轮播展示您的企业以获得更好的宣传，停止支持后不会取消您的宣传位。'
-				},{
-					icon: 'el-icon-alarm-clock',
-					desc: '享受每月4人/日个性化需求定制，节约开发成本。'
-				}]
+				sponsorList: CONSTS.sponsorList,
+				authorInfo:  CONSTS.sponsorList
 			}
 		}
 	}
@@ -74,6 +64,22 @@ export default {
 		.page-btn {
 			text-align: center;
 			padding-bottom: 40px;
+			.conact-btn {
+				text-decoration: none;
+				display: block;
+				width: 98px;
+				margin: 0 auto;
+				border: 1px solid #ccc;
+				padding: 10px 18px;
+				color: #606266;
+				outline: none;
+				border-radius: 4px;
+			}
+			.conact-btn:hover {
+				color: #409EFF;
+				border-color: #c6e2ff;
+				background-color: #ecf5ff;
+			}
 		}
 	}
 </style>

@@ -3,12 +3,12 @@
   <section class="page-home">
 		<div class="header-area">
 			<p class="header-tips">
-				Mr.Wednesday's Free Business Frameworker
+				{{viewData.headerTipsInfo.title}}
 			</p>
 			<p>
-				One stop for Free, Professional and Open Source basic system solutions for Internet companies
+				{{viewData.headerTipsInfo.description}}
 			</p>
-			<el-button>GET STARTED</el-button>
+			<el-button @click="gotoProject('www.baidu.com')">GET STARTED</el-button>
 		</div>
 		<div class="product-area">
 			<div class="product-top">
@@ -18,11 +18,11 @@
 			<div class="product-list">
 				<div class="product-item" v-for="item in viewData.productList" :key="item.id">
 					<div class="product-img">
-						<img src="../assets/images/project01.png" alt="">
+						<img :src="item.imgUrl" alt="" @click="gotoProject(item.hrefUrl)">
 					</div>
 					<div class="product-info">
 						<p class="product-name">{{item.name}}</p>
-						<p class="product-desc">{{item.description}}</p>
+						<p class="product-desc" :title="item.description">{{item.description}}</p>
 					</div>
 				</div>
 			</div>
@@ -40,65 +40,19 @@
 					</p>
 				</div>
 			</div>
-
 		</div>
   </section>
 </template>
-
 <script>
-
+import CONSTS from '@/utils/consts'
 export default {
 	name: 'home',
 	data() {
 		return {
 			viewData: {
-				productList: [{
-					id: 1,
-					name: '项目1',
-					description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.'
-				},{
-					id: 2,
-					name: '项目1',
-					description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.'
-				},{
-					id: 3,
-					name: '项目1',
-					description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.'
-				},{
-					id: 4,
-					name: '项目1',
-					description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.'
-				},{
-					id: 5,
-					name: '项目1',
-					description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.'
-				}],
-				awesomeList: [{
-					title:'功能齐全',
-					icon: 'el-icon-s-grid',
-					desc: '提供一般信息化企业必备产品，功能覆盖全面，使用组件化开发，企业可按需定制。'
-				},{
-					title:'开箱即用',
-					icon: 'el-icon-goods',
-					desc: '简单使用场景下只需要5分钟时间简单调整配置，一键部署。真正做到开箱即用。'
-				},{
-					title:'支持上云',
-					icon: 'el-icon-upload',
-					desc: '支持阿里云及腾讯云服务器部署，把产品包交给云运维吧，省下昂贵的运维成本。'
-				},{
-					title:'高效',
-					icon: 'el-icon-refresh',
-					desc: '免费不减配，所有产品在单机情况下均保证良好的性能。在集群部署下可以应对中小电商日常流量。'
-				},{
-					title:'免费支持',
-					icon: 'el-icon-setting',
-					desc: '提供工单支持，免费工单48小时内响应；付费工单1~12小时解决问题。'
-				},{
-					title:'永久开源',
-					icon: 'el-icon-time',
-					desc: '基于GPL(>=3)开源协议。'
-				}],
-				rowNum: 4
+				productList: CONSTS.productList,
+				awesomeList: CONSTS.awesomeList,
+				headerTipsInfo: CONSTS.headerTipsInfo
 			}
 		}
 	},
@@ -107,6 +61,9 @@ export default {
 			this.$router.push({
 				name: 'productList'
 			})
+		},
+		gotoProject(url) {
+			window.open(`https://${url}`);
 		}
 	}
 }
@@ -152,6 +109,7 @@ export default {
 					height: 250px;
 					img {
 						display: block;
+						cursor: pointer;
 						width: 100%;
 						max-height: 100%;
 					}
@@ -159,7 +117,14 @@ export default {
 				.product-info {
 					text-align: left;
 					padding: 10px;
-
+					.product-desc {
+						overflow: hidden;
+						text-overflow: ellipsis;
+						display: -webkit-box;
+						-webkit-line-clamp: 3;
+						display: -webkit-box;
+						-webkit-box-orient: vertical;
+					}
 				}
 			}
 		}
@@ -194,7 +159,6 @@ export default {
 				}
 			}
 		}
-
 		// .awesome-item:hover {
 		// 	border-color: #0099FF;
 		// }

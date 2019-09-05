@@ -5,17 +5,17 @@
 			<div class="support-item" v-for="(item,index) in viewData.supportList" :key="item.id">
 				<div class="support-image">
 					<div class="images-area">
-						<img src="@/assets/images/project01.png" alt="">
+						<img :src="item.imgUrl" alt="" @click="gotoProject(item.hrefUrl)">
 					</div>
 					<p class="support-name">{{item.name}}</p>
 					<div class="btn-area">
-						<el-button size="small">手册</el-button>
-						<el-button size="small">GtiHub</el-button>
+						<el-button size="small" @click="gotoProject(item.hrefUrl)">手册</el-button>
+						<el-button size="small" @click="gotoProject(item.hrefUrl)">GtiHub</el-button>
 					</div>
 				</div>
 				<div class="support-info">
 					<div class="support-introduce">
-						<p class="introduce-title"> <span>创建工单</span> <el-button size="small">转至GitHub提交issue</el-button> </p>
+						<p class="introduce-title"> <span>创建工单</span> <el-button size="small"  @click="gotoProject(item.hrefUrl)">转至GitHub提交issue</el-button> </p>
 						<p class="introduce-area">
 							<el-input
 								v-model="formDataList[index]['workOrder']"
@@ -47,7 +47,7 @@
 								placeholder="若您已付费，请再次填写您的订单号">
 							</el-input>
 						</p>
-						<el-button size="small" @click="handleSubmit">提交</el-button>
+						<el-button size="small" @click="handleSubmit(index)">提交</el-button>
 					</div>
 				</div>
 			</div>
@@ -56,33 +56,14 @@
 </template>
 
 <script>
+import CONSTS from '@/utils/consts'
 export default {
 	name: 'supportList',
 	data(){
 		return {
 			formDataList: [],
 			viewData: {
-				supportList: [{
-					id: 1,
-					name: 'Wed-JOB',
-					description: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.'
-				},{
-					id: 2,
-					name: '项目1',
-					description: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.'
-				},{
-					id: 3,
-					name: '项目1',
-					description: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.'
-				},{
-					id: 4,
-					name: '项目1',
-					description: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.'
-				},{
-					id: 5,
-					name: '项目1',
-					description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.'
-				}]
+				supportList: CONSTS.productList
 			}
 		}
 	},
@@ -92,16 +73,23 @@ export default {
 				id: item.id,
 				name: item.name,
 				description: item.description,
+				// 创建工单内容
 				workOrder: '',
+				// 选择支持类型[1：免费支持；2：付费为工单加速]
 				workOrderType: '1',
+				// 联系方式
 				phoneNumber: '',
+				// 订单号
 				orderNo: ''
 			}
 		})
 	},
 	methods: {
-		handleSubmit() {
-			console.log(this.formDataList)
+		handleSubmit(index) {
+			console.log(this.formDataList[index])
+		},
+		gotoProject(url) {
+			window.open(`https://${url}`);
 		}
 	}
 }
@@ -128,6 +116,7 @@ export default {
 					img {
 						width: 100%;
 						max-height: 100%;
+						cursor: pointer;
 					}
 				}
 				.support-name {

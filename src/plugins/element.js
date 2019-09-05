@@ -8,7 +8,8 @@ import {
 	InputNumber,
 	Radio,
   RadioGroup,
-  RadioButton,
+	RadioButton,
+	Link
  } from 'element-ui'
 
 Vue.use(Button)
@@ -20,4 +21,5 @@ Vue.use(InputNumber)
 Vue.use(Radio)
 Vue.use(RadioGroup)
 Vue.use(RadioButton)
+Vue.use(Link)
 

@@ -5,12 +5,12 @@
 			<div class="product-item" v-for="item in viewData.productList" :key="item.id">
 				<div class="product-image">
 					<div class="images-area">
-						<img src="@/assets/images/project01.png" alt="">
+						<img :src="item.imgUrl" alt="" @click="gotoProject(item.hrefUrl)">
 					</div>
 					<p class="product-name">{{item.name}}</p>
 					<div class="btn-area">
-						<el-button size="small">手册</el-button>
-						<el-button size="small">GtiHub</el-button>
+						<el-button size="small" @click="gotoProject(item.hrefUrl)">手册</el-button>
+						<el-button size="small" @click="gotoProject(item.hrefUrl)">GtiHub</el-button>
 					</div>
 				</div>
 				<div class="product-info">
@@ -19,9 +19,9 @@
 						<p class="introduce-area">{{item.description}}</p>
 					</div>
 					<p>演示</p>
-					<el-button>DEMO</el-button>
+					<el-button  @click="gotoProject(item.hrefUrl)">DEMO</el-button>
 					<P>下载最新版本</P>
-					<el-button>点击下载</el-button>
+					<el-button  @click="gotoProject(item.hrefUrl)">点击下载</el-button>
 				</div>
 			</div>
 		</div>
@@ -29,33 +29,19 @@
 </template>
 
 <script>
+import CONSTS from '@/utils/consts'
 export default {
 	name: 'productList',
 	data(){
 		return {
 			viewData: {
-				productList: [{
-					id: 1,
-					name: 'Wed-JOB',
-					description: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.'
-				},{
-					id: 2,
-					name: '项目1',
-					description: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.'
-				},{
-					id: 3,
-					name: '项目1',
-					description: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.'
-				},{
-					id: 4,
-					name: '项目1',
-					description: 'Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.'
-				},{
-					id: 5,
-					name: '项目1',
-					description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste sunt porro delectus cum officia magnam.'
-				}]
+				productList: CONSTS.productList
 			}
+		}
+	},
+	methods: {
+		gotoProject(url) {
+			window.open(`https://${url}`);
 		}
 	}
 }

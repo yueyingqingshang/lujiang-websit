@@ -14,28 +14,13 @@
 	</section>
 </template>
 <script>
+import CONSTS from '@/utils/consts'
 export default {
 	name: 'pageHeader',
 	data() {
 		return {
 			viewData: {
-				operationList: [{
-					label: '首页',
-					routeName: 'home'
-				},{
-					label: '产品列表',
-					routeName: 'productList'
-				},{
-					label: '用户讨论组',
-					routeName: 'user'
-				},{
-					label: '技术支持',
-					routeName: 'support'
-				},{
-					label: '赞助',
-					routeName: 'sponsor'
-				}],
-				activeNav: ''
+				operationList: CONSTS.operationList
 			}
 		}
 	},

@@ -25,7 +25,7 @@ export default {
 		return {
 			viewData: {
 				sponsorList: CONSTS.sponsorList,
-				authorInfo:  CONSTS.sponsorList
+				authorInfo:  CONSTS.authorInfo
 			}
 		}
 	}

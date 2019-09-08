@@ -39,5 +39,8 @@ export default new Router({
       name: 'sponsor',
       component: sponsor
     }
-  ]
+	],
+	scrollBehavior () {
+		return { x: 0, y: 0 }
+	}
 })
